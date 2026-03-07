@@ -1,0 +1,37 @@
+{
+  "MiG-3": {
+    "nation": "USSR",
+    "speed": "640 km/h",
+    "climb": "15 m/s",
+    "weapons": "1x 12.7mm + 2x 7.62mm",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Mikoyan-Gurevich_MiG-3.jpg",
+    "tip": "Boom and zoom. Avoid turn fights."
+  },
+
+  "Su-27": {
+    "nation": "USSR",
+    "speed": "2500 km/h",
+    "climb": "300 m/s",
+    "weapons": "R-73 and R-27 missiles",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/8/82/Sukhoi_Su-27.jpg",
+    "tip": "Use agility and IR missiles in close combat."
+  },
+
+  "F-16": {
+    "nation": "USA",
+    "speed": "2400 km/h",
+    "climb": "254 m/s",
+    "weapons": "AIM-9, AIM-120",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/9/96/F-16_June_2008.jpg",
+    "tip": "Fight vertically and maintain energy."
+  },
+
+  "Bf 109": {
+    "nation": "Germany",
+    "speed": "640 km/h",
+    "climb": "17 m/s",
+    "weapons": "20mm cannon + machine guns",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/8/86/Bf_109_F-4.jpg",
+    "tip": "Climb above enemies and dive attack."
+  }
+}
