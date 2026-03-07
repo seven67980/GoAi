@@ -1,8 +1,10 @@
 from flask import Flask, render_template, request, jsonify
 import json
+import os
 
 app = Flask(__name__)
 
+# Load plane data
 with open("planes.json") as f:
     planes = json.load(f)
 
@@ -36,7 +38,6 @@ def ask():
     for plane in planes:
         if plane.lower() in question:
             data = planes[plane]
-
             return jsonify({
                 "answer":
                 f"{plane}\n\n"
@@ -50,7 +51,7 @@ def ask():
 
     return jsonify({"answer": "Plane not found. Try MiG-3, Su-27, F-16 or Bf 109."})
 
+# --- THIS BLOCK GOES AT THE VERY END ---
 if __name__ == "__main__":
-    import os
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
