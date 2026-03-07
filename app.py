@@ -4,8 +4,9 @@ import os
 
 app = Flask(__name__)
 
-# Load plane data
-with open("planes.json") as f:
+# --- FIXED: Load planes.json safely ---
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+with open(os.path.join(BASE_DIR, "planes.json")) as f:
     planes = json.load(f)
 
 @app.route("/")
@@ -51,7 +52,7 @@ def ask():
 
     return jsonify({"answer": "Plane not found. Try MiG-3, Su-27, F-16 or Bf 109."})
 
-# --- THIS BLOCK GOES AT THE VERY END ---
+# --- RUN APP ON RENDER OR LOCALLY ---
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
