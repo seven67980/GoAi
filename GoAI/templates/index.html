@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>GoAI V12</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<h1>GoAI V12 – War Thunder Assistant</h1>
+
+<input id="question" placeholder="Ask about a plane or compare: MiG-3 vs Bf 109">
+<button onclick="ask()">Ask</button>
+
+<br><br>
+
+<img id="planeImage" width="400">
+
+<pre id="answer"></pre>
+
+<script>
+
+async function ask(){
+
+let q = document.getElementById("question").value;
+
+let res = await fetch("/ask",{
+method:"POST",
+headers:{"Content-Type":"application/json"},
+body:JSON.stringify({question:q})
+});
+
+let data = await res.json();
+
+document.getElementById("answer").innerText = data.answer;
+
+if(data.image){
+document.getElementById("planeImage").src = data.image;
+}
+
+}
+
+</script>
+
+</body>
+</html>
