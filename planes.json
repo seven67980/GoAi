@@ -26,6 +26,15 @@
     "tip": "Maintain energy and fight vertically."
   },
 
+  "F-22": {
+    "nation": "USA",
+    "speed": "2410 km/h",
+    "climb": "315 m/s",
+    "weapons": "AIM-120 and AIM-9 missiles",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/8/83/F-22_Raptor.jpg",
+    "tip": "Use stealth and supercruise."
+  },
+
   "Bf 109": {
     "nation": "Germany",
     "speed": "640 km/h",
