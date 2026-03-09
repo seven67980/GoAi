@@ -1,7 +1,62 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+
 <title>GoAI</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#0f172a;
+color:white;
+text-align:center;
+padding:40px;
+}
+
+h1{
+font-size:40px;
+}
+
+input{
+padding:12px;
+width:260px;
+border-radius:8px;
+border:none;
+}
+
+button{
+padding:12px 18px;
+border:none;
+border-radius:8px;
+background:#3b82f6;
+color:white;
+cursor:pointer;
+margin-left:5px;
+}
+
+button:hover{
+background:#2563eb;
+}
+
+pre{
+margin-top:25px;
+background:#1e293b;
+padding:20px;
+border-radius:10px;
+display:inline-block;
+text-align:left;
+}
+
+img{
+margin-top:20px;
+border-radius:10px;
+display:none;
+}
+
+</style>
+
 </head>
 
 <body>
@@ -12,26 +67,35 @@
 <button onclick="ask()">Ask</button>
 
 <pre id="answer"></pre>
+
+<br>
+
 <img id="planeimg" width="400">
 
 <script>
 
-async function ask() {
+async function ask(){
 
-let q = document.getElementById("question").value;
+let q=document.getElementById("question").value;
 
-let res = await fetch("/ask",{
+let res=await fetch("/ask",{
 method:"POST",
 headers:{"Content-Type":"application/json"},
 body:JSON.stringify({question:q})
 });
 
-let data = await res.json();
+let data=await res.json();
 
-document.getElementById("answer").textContent = data.answer;
+document.getElementById("answer").textContent=data.answer;
 
 if(data.image){
-document.getElementById("planeimg").src = data.image;
+
+let img=document.getElementById("planeimg");
+
+img.src=data.image;
+
+img.style.display="block";
+
 }
 
 }
@@ -39,4 +103,5 @@ document.getElementById("planeimg").src = data.image;
 </script>
 
 </body>
+
 </html>
