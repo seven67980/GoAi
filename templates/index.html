@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>GoAI</title>
+</head>
+
+<body>
+
+<h1>✈️ GoAI Plane Assistant</h1>
+
+<input id="question" placeholder="Ask about a plane">
+<button onclick="ask()">Ask</button>
+
+<pre id="answer"></pre>
+<img id="planeimg" width="400">
+
+<script>
+
+async function ask() {
+
+let q = document.getElementById("question").value;
+
+let res = await fetch("/ask",{
+method:"POST",
+headers:{"Content-Type":"application/json"},
+body:JSON.stringify({question:q})
+});
+
+let data = await res.json();
+
+document.getElementById("answer").textContent = data.answer;
+
+if(data.image){
+document.getElementById("planeimg").src = data.image;
+}
+
+}
+
+</script>
+
+</body>
+</html>
