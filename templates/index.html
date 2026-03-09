@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-
 <title>GoAI</title>
 
 <style>
@@ -11,48 +9,72 @@ body{
 font-family:Arial;
 background:#0f172a;
 color:white;
-text-align:center;
-padding:40px;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+margin:0;
 }
 
-h1{
-font-size:40px;
+#chatbox{
+width:600px;
+height:80vh;
+background:#1e293b;
+border-radius:12px;
+display:flex;
+flex-direction:column;
+overflow:hidden;
+}
+
+#messages{
+flex:1;
+padding:20px;
+overflow-y:auto;
+}
+
+.message{
+margin-bottom:15px;
+max-width:80%;
+padding:12px;
+border-radius:10px;
+}
+
+.user{
+background:#3b82f6;
+align-self:flex-end;
+}
+
+.ai{
+background:#334155;
+}
+
+#inputarea{
+display:flex;
+padding:10px;
+background:#0f172a;
 }
 
 input{
-padding:12px;
-width:260px;
-border-radius:8px;
+flex:1;
+padding:10px;
 border:none;
+border-radius:8px;
 }
 
 button{
-padding:12px 18px;
+margin-left:10px;
+padding:10px 15px;
 border:none;
 border-radius:8px;
 background:#3b82f6;
 color:white;
 cursor:pointer;
-margin-left:5px;
-}
-
-button:hover{
-background:#2563eb;
-}
-
-pre{
-margin-top:25px;
-background:#1e293b;
-padding:20px;
-border-radius:10px;
-display:inline-block;
-text-align:left;
 }
 
 img{
-margin-top:20px;
+margin-top:10px;
 border-radius:10px;
-display:none;
+max-width:100%;
 }
 
 </style>
@@ -61,22 +83,62 @@ display:none;
 
 <body>
 
-<h1>✈️ GoAI Plane Assistant</h1>
+<div id="chatbox">
 
-<input id="question" placeholder="Ask about a plane">
-<button onclick="ask()">Ask</button>
+<div id="messages"></div>
 
-<pre id="answer"></pre>
+<div id="inputarea">
+<input id="question" placeholder="Ask about a plane...">
+<button onclick="ask()">Send</button>
+</div>
 
-<br>
-
-<img id="planeimg" width="400">
+</div>
 
 <script>
 
+function addMessage(text,type,image=null){
+
+let messages=document.getElementById("messages");
+
+let msg=document.createElement("div");
+
+msg.classList.add("message");
+msg.classList.add(type);
+
+msg.textContent=text;
+
+messages.appendChild(msg);
+
+if(image){
+
+let img=document.createElement("img");
+img.src=image;
+
+messages.appendChild(img);
+
+}
+
+messages.scrollTop=messages.scrollHeight;
+
+}
+
 async function ask(){
 
-let q=document.getElementById("question").value;
+let input=document.getElementById("question");
+
+let q=input.value;
+
+if(!q)return;
+
+addMessage(q,"user");
+
+input.value="";
+
+let typing=document.createElement("div");
+typing.classList.add("message","ai");
+typing.textContent="GoAI is thinking...";
+
+document.getElementById("messages").appendChild(typing);
 
 let res=await fetch("/ask",{
 method:"POST",
@@ -86,22 +148,13 @@ body:JSON.stringify({question:q})
 
 let data=await res.json();
 
-document.getElementById("answer").textContent=data.answer;
+typing.remove();
 
-if(data.image){
-
-let img=document.getElementById("planeimg");
-
-img.src=data.image;
-
-img.style.display="block";
-
-}
+addMessage(data.answer,"ai",data.image);
 
 }
 
 </script>
 
 </body>
-
 </html>
