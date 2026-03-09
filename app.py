@@ -4,15 +4,17 @@ import os
 
 app = Flask(__name__)
 
-# --- FIXED: Load planes.json safely ---
+# Load planes.json safely
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 with open(os.path.join(BASE_DIR, "planes.json")) as f:
     planes = json.load(f)
 
+# Homepage
 @app.route("/")
 def home():
     return render_template("index.html")
 
+# AI question route
 @app.route("/ask", methods=["POST"])
 def ask():
     question = request.json["question"].lower()
@@ -35,7 +37,7 @@ def ask():
                         f"{plane2} weapons: {planes[plane2]['weapons']}"
                     })
 
-    # plane info
+    # single plane info
     for plane in planes:
         if plane.lower() in question:
             data = planes[plane]
@@ -52,7 +54,7 @@ def ask():
 
     return jsonify({"answer": "Plane not found. Try MiG-3, Su-27, F-16 or Bf 109."})
 
-# --- RUN APP ON RENDER OR LOCALLY ---
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
