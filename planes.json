@@ -1,46 +1,51 @@
 {
 "MiG-29":{
 "nation":"USSR",
+"br":"12.0",
 "speed":"2450 km/h",
-"climb":"330 m/s",
+"speed_value":2450,
 "weapons":"R-73, R-27",
 "image":"https://upload.wikimedia.org/wikipedia/commons/6/6c/MiG-29.jpg",
-"tip":"Use thrust and R73 missiles in close dogfights."
-},
-
-"Su-27":{
-"nation":"USSR",
-"speed":"2500 km/h",
-"climb":"300 m/s",
-"weapons":"R-73, R-27",
-"image":"https://upload.wikimedia.org/wikipedia/commons/8/82/Sukhoi_Su-27.jpg",
-"tip":"Great maneuverability."
+"tip":"Excellent dogfighter with strong missiles."
 },
 
 "F-16":{
 "nation":"USA",
+"br":"12.0",
 "speed":"2400 km/h",
-"climb":"254 m/s",
+"speed_value":2400,
 "weapons":"AIM-9, AIM-120",
 "image":"https://upload.wikimedia.org/wikipedia/commons/9/96/F-16_June_2008.jpg",
-"tip":"Energy fighting."
+"tip":"Great energy fighter."
 },
 
 "F-14":{
 "nation":"USA",
+"br":"11.7",
 "speed":"2485 km/h",
-"climb":"229 m/s",
+"speed_value":2485,
 "weapons":"AIM-54 Phoenix",
 "image":"https://upload.wikimedia.org/wikipedia/commons/5/56/F-14_Tomcat.jpg",
 "tip":"Use long range missiles."
 },
 
+"Su-27":{
+"nation":"USSR",
+"br":"12.0",
+"speed":"2500 km/h",
+"speed_value":2500,
+"weapons":"R-73, R-27",
+"image":"https://upload.wikimedia.org/wikipedia/commons/8/82/Sukhoi_Su-27.jpg",
+"tip":"Very maneuverable fighter."
+},
+
 "Bf 109":{
 "nation":"Germany",
+"br":"5.7",
 "speed":"640 km/h",
-"climb":"17 m/s",
+"speed_value":640,
 "weapons":"20mm cannon",
 "image":"https://upload.wikimedia.org/wikipedia/commons/8/86/Bf_109_F-4.jpg",
-"tip":"Climb and boom & zoom."
+"tip":"Climb above enemies and boom & zoom."
 }
 }
