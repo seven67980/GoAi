@@ -1,29 +1,55 @@
 body{
-background:#0b0f1a;
-color:white;
-font-family:Arial;
-text-align:center;
+    background:#0b0f1a;
+    color:white;
+    font-family:Arial;
+    display:flex;
+    justify-content:center;
+    padding-top:50px;
+}
+
+.chat-container{
+    width:90%;
+    max-width:700px;
+}
+
+#chatbox{
+    background:#111;
+    padding:20px;
+    border-radius:10px;
+    min-height:400px;
+    max-height:600px;
+    overflow-y:auto;
+    margin-bottom:10px;
+}
+
+.user-msg{
+    background:#1f6feb;
+    padding:10px;
+    border-radius:10px;
+    margin:5px 0;
+    text-align:right;
+}
+
+.ai-msg{
+    background:#222;
+    padding:10px;
+    border-radius:10px;
+    margin:5px 0;
+}
+
+.ai-msg img{
+    width:100%;
+    max-width:400px;
+    margin-top:10px;
+    border-radius:10px;
 }
 
 input{
-padding:10px;
-width:350px;
+    padding:10px;
+    width:75%;
 }
 
 button{
-padding:10px;
-margin-left:10px;
-}
-
-pre{
-margin-top:20px;
-background:#111;
-padding:20px;
-display:inline-block;
-text-align:left;
-}
-
-img{
-margin-top:20px;
-border-radius:10px;
+    padding:10px;
+    width:20%;
 }
