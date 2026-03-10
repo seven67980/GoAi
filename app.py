@@ -14,9 +14,17 @@ def home():
 
 def find_plane(user_input):
     plane_names = list(planes.keys())
-    match = process.extractOne(user_input, plane_names)
+
+    # make everything lowercase
+    user_input = user_input.lower()
+    plane_names_lower = [p.lower() for p in plane_names]
+
+    match = process.extractOne(user_input, plane_names_lower)
+
     if match and match[1] > 60:
-        return match[0]
+        index = plane_names_lower.index(match[0])
+        return plane_names[index]
+
     return None
 
 @app.route("/ask", methods=["POST"])
